@@ -42,9 +42,11 @@ function meme(reddit, callback) {
                 return console.log('No results found.');
             object = {
                 title: random.title,
+                flairText: random.link_flair_text,
                 url: random.url,
                 author: random.author,
                 subreddit: random.subreddit,
+                nsfw: random.over_18,
                 created: utils_1.time(random.created),
                 created_utc: utils_1.time(random.created_utc)
             };

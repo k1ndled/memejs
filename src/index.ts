@@ -38,9 +38,11 @@ export async function meme(reddit?: string, callback?: any) {
 		if(!/^.*\.(jpg?g|png|gif|gifv)$/.test(random.url)) return console.log('No results found.');
 		object = {
 			title: random.title,
+			flairText: random.link_flair_text,
 			url: random.url,
 			author: random.author,
 			subreddit: random.subreddit,
+			nsfw: random.over_18,
 			created: time(random.created as number),
 			created_utc: time(random.created_utc as number)
 		}
