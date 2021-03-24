@@ -28,7 +28,7 @@ export async function meme(reddit?: string, callback?: any) {
 	if(callback) console.log('Callbacks are now deprecated please update your code.');
   if(!reddit) reddit = subs[~~(Math.random() * subs.length)];
 
-	const url: string = `https://www.reddit.com/r/${reddit}.json?sort=top&t=day&limit=100`;
+	const url: string = `https://www.reddit.com/r/${reddit}.json?sort=top&t=day&limit=150`;
 	let object;
 
   await checkSubreddit(url).then((body: any) => {

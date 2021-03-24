@@ -31,7 +31,7 @@ function meme(reddit, callback) {
             console.log('Callbacks are now deprecated please update your code.');
         if (!reddit)
             reddit = subs[~~(Math.random() * subs.length)];
-        const url = `https://www.reddit.com/r/${reddit}.json?sort=top&t=day&limit=100`;
+        const url = `https://www.reddit.com/r/${reddit}.json?sort=top&t=day&limit=150`;
         let object;
         yield utils_1.checkSubreddit(url).then((body) => {
             if (!body.length)
