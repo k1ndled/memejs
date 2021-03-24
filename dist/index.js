@@ -31,7 +31,7 @@ function meme(reddit, callback) {
             console.log('Callbacks are now deprecated please update your code.');
         if (!reddit)
             reddit = subs[~~(Math.random() * subs.length)];
-        const url = `https://www.reddit.com/r/${reddit}.json?sort=top&t=day&limit=150`;
+        const url = `https://www.reddit.com/r/${reddit}.json?sort=top&t=day&limit=200`;
         let object;
         yield utils_1.checkSubreddit(url).then((body) => {
             if (!body.length)
@@ -40,9 +40,10 @@ function meme(reddit, callback) {
             const random = body[math].data;
             if (!/^.*\.(jpg?g|png|gif|gifv)$/.test(random.url))
                 return console.log('No results found.');
+            const flair = random.link_flair_text;
             object = {
                 title: random.title,
-                flairText: random.link_flair_text,
+                flairText: flair ? flair : "",
                 url: random.url,
                 author: random.author,
                 subreddit: random.subreddit,

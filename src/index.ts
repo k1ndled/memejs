@@ -28,7 +28,7 @@ export async function meme(reddit?: string, callback?: any) {
 	if(callback) console.log('Callbacks are now deprecated please update your code.');
   if(!reddit) reddit = subs[~~(Math.random() * subs.length)];
 
-	const url: string = `https://www.reddit.com/r/${reddit}.json?sort=top&t=day&limit=150`;
+	const url: string = `https://www.reddit.com/r/${reddit}.json?sort=top&t=day&limit=200`;
 	let object;
 
   await checkSubreddit(url).then((body: any) => {
@@ -36,9 +36,10 @@ export async function meme(reddit?: string, callback?: any) {
 		const math: number = Math.floor(Math.random() * Math.floor(body.length));
 		const random = body[math].data;
 		if(!/^.*\.(jpg?g|png|gif|gifv)$/.test(random.url)) return console.log('No results found.');
+		const flair: string = random.link_flair_text;
 		object = {
 			title: random.title,
-			flairText: random.link_flair_text,
+			flairText: flair ? flair : "",
 			url: random.url,
 			author: random.author,
 			subreddit: random.subreddit,
